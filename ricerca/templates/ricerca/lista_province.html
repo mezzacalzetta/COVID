@@ -1,0 +1,16 @@
+{% extends 'ricerca/base.html' %}
+{% block content %}
+<h1>DATI PROVINCE</h1>
+<form action="/lista_province" method="get">
+  <input list="provincia" name="provincia">
+  <datalist id="province">
+{% for provincia in province %}
+    <option value={{ provincia.chiave }}>
+{% endfor %}
+  </datalist>
+  <input type="submit">
+</form>
+{% if 'provincia' in request.GET %}  
+<img src=  "/static/ricerca/PROVINCIA_{{request.GET.provincia}}.png"  style="width:800px;height:600px;" align="middle" alt="My image">
+{% endif %}
+{% endblock %}
